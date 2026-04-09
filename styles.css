@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    background: black;
+    color: #00ffcc;
+    font-family: 'Arial Black', sans-serif;
+    overflow-x: hidden;
+    text-align: center;
+    /* Add padding so content doesn't get hidden behind the fixed city */
+    padding-bottom: 200px; 
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background: #111;
+    border-bottom: 2px solid #00ffcc;
+  }
+  
+  .nav a {
+    color: #00ffcc;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin: 20px;
+    color: #ff00ff;
+    position: relative;
+    z-index: 2; 
+  }
+
+  .ticker {
+    white-space: nowrap;
+    overflow: hidden;
+    border-top: 2px solid #00ffcc;
+    border-bottom: 2px solid #00ffcc;
+  }
+  
+  .ticker-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll 15s linear infinite;
+  }
+  
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  #board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    background: black; 
+  }
+  
+  .post {
+    background: rgba(17, 17, 17, 0.9);
+    border: 2px solid #00ffcc;
+    padding: 20px;
+    border-radius: 5px;
+    color: #00ffcc;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    animation: glow 2s infinite alternate;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .post:hover {
+    transform: translateY(-5px); 
+    border-color: #ff00ff; 
+    box-shadow: 0 0 30px #ff00ff, inset 0 0 10px #ff00ff; 
+    z-index: 5;
+  }
+  
+  
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem; 
+    }
+  
+    .cityscape {
+      height: 120px; 
+    }
+  
+    .building {
+      width: 30px; 
+    }
+    
+ 
+    .b4, .b5 { display: none; }
+  
+    #board {
+      grid-template-columns: 1fr; 
+      padding: 20px;
+    }
+
+    body {
+        padding-bottom: 140px; 
+      }
+    }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 10px #00ffcc; }
+    to { box-shadow: 0 0 20px #ff00ff; }
+  }
+  
+  button {
+    padding: 10px 20px;
+    background: #ff00ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .back-link {
+    color: #00ffcc;
+  }
+
+   .cityscape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    z-index: 10;
+    overflow: hidden;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .skyline {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 5%;
+  }
+  
+  .building {
+    background-color: #111;
+    border: 1px solid #333;
+    border-bottom: none;
+    position: relative;
+ 
+    background-image: 
+      repeating-linear-gradient(to bottom, transparent, transparent 15px, rgba(255, 255, 255, 0.05) 15px, rgba(255, 255, 255, 0.05) 16px),
+      repeating-linear-gradient(to right, transparent, transparent 10px, rgba(255, 255, 255, 0.05) 10px, rgba(255, 255, 255, 0.05) 11px);
+  }
+  
+
+  .b1 { height: 140px; width: 60px; box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.3); }
+  .b2 { height: 90px; width: 50px; box-shadow: inset 0 0 15px rgba(255, 0, 255, 0.3); }
+  .b3 { height: 160px; width: 70px; box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.3); }
+  .b4 { height: 110px; width: 55px; box-shadow: inset 0 0 15px rgba(255, 0, 255, 0.3); }
+  .b5 { height: 75px; width: 45px; box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.3); }
+  
+
+  .night-road {
+    width: 100%;
+    height: 40px;
+    background: #050505;
+    border-top: 2px dashed #00ffcc;
+    position: relative;
+  }
+  
+
+  .light-post {
+    width: 4px;
+    height: 30px;
+    background-color: #222;
+    position: absolute;
+    top: -25px;
+  }
+  
+  .lp1 { left: 25%; }
+  .lp2 { left: 67%; }
+  
+
+  .lp1::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.4) 0%, transparent 70%);
+  }
+  
+
+  .lp2::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.4) 0%, transparent 70%);
+  }
+  
+
+  .traffic { position: absolute; bottom: 0; width: 100%; height: 100%; }
+  .car { position: absolute; height: 10px; width: 22px; border-radius: 2px; }
+  
+  .car.headlight {
+    bottom: 6px;
+    background-color: #191818;
+    animation: drive-east 10s linear infinite;
+    box-shadow: 0 0 15px #00ffcc, 8px 0 10px #00ffcc;
+  }
+  
+  .car.taillight {
+    top: 6px;
+    background-color: #181717;
+    animation: drive-west 14s linear infinite;
+    box-shadow: 0 0 15px #ff00ff, -8px 0 10px #ff00ff;
+  }
+  
+  @keyframes drive-east { from { left: -50px; } to { left: 100%; } }
+  @keyframes drive-west { from { right: -50px; } to { right: 100%; } }
